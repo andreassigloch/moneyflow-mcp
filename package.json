@@ -1,6 +1,6 @@
 {
   "name": "moneyflow-mcp",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "MCP server for moneyflow – query money flows, simulate policy changes, compare cohorts. Connects to money-flow.org.",
   "author": "andreas@siglochconsulting",
   "license": "MIT",
