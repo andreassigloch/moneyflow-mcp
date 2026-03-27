@@ -105,9 +105,18 @@ server.setRequestHandler(CallToolRequestSchema, async (request) => {
 // ---------- Start ----------
 
 async function main() {
+  // Eagerly connect to remote before accepting stdio requests
+  try {
+    await getRemoteClient();
+    console.error(`moneyflow MCP proxy connected to ${API_URL}/mcp`);
+  } catch (error) {
+    console.error(`Warning: could not pre-connect to ${API_URL}/mcp:`, error instanceof Error ? error.message : error);
+    // Continue anyway — will retry on first request
+  }
+
   const transport = new StdioServerTransport();
   await server.connect(transport);
-  console.error(`moneyflow MCP proxy running on stdio (remote: ${API_URL}/mcp)`);
+  console.error(`moneyflow MCP proxy running on stdio`);
 }
 
 main().catch((error) => {
