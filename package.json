@@ -1,0 +1,48 @@
+{
+  "name": "moneyflow-mcp",
+  "version": "0.1.0",
+  "description": "MCP server for moneyflow – query money flows, simulate policy changes, compare cohorts. Connects to money-flow.org.",
+  "author": "andreas@siglochconsulting",
+  "license": "MIT",
+  "type": "module",
+  "main": "dist/index.js",
+  "bin": {
+    "moneyflow-mcp": "dist/index.js"
+  },
+  "files": [
+    "dist",
+    "server.json"
+  ],
+  "scripts": {
+    "build": "tsc",
+    "dev": "tsc --watch",
+    "test": "vitest run",
+    "test:watch": "vitest",
+    "prepublishOnly": "npm run build && npm test"
+  },
+  "keywords": [
+    "mcp",
+    "model-context-protocol",
+    "moneyflow",
+    "finance",
+    "geldfluss",
+    "simulation",
+    "neo4j",
+    "graph"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/andreassigloch/moneyflow-mcp"
+  },
+  "dependencies": {
+    "@modelcontextprotocol/sdk": "^1.12.1"
+  },
+  "devDependencies": {
+    "@types/node": "^22.10.2",
+    "typescript": "^5.7.3",
+    "vitest": "^2.1.8"
+  },
+  "engines": {
+    "node": ">=20.0.0"
+  }
+}

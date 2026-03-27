@@ -1,0 +1,28 @@
+{
+  "name": "moneyflow",
+  "description": "Query money flows between state, citizens, and enterprises. Simulate policy changes and compare cohorts.",
+  "author": "andreas@siglochconsulting",
+  "license": "MIT",
+  "package": {
+    "registryType": "npm",
+    "identifier": "moneyflow-mcp",
+    "version": "0.1.0"
+  },
+  "transport": {
+    "type": "stdio"
+  },
+  "configuration": {
+    "env": {
+      "MONEYFLOW_API_URL": {
+        "description": "moneyflow API base URL (default: https://money-flow.org)",
+        "required": false,
+        "secret": false
+      },
+      "MONEYFLOW_API_KEY": {
+        "description": "Optional API key for higher rate limits",
+        "required": false,
+        "secret": true
+      }
+    }
+  }
+}

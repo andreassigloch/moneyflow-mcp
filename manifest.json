@@ -1,0 +1,91 @@
+{
+  "manifest_version": "0.3",
+  "name": "moneyflow-mcp",
+  "version": "0.1.0",
+  "display_name": "moneyflow MCP Server",
+  "description": "Query money flows between state, citizens, and enterprises. Simulate policy changes, compare cohorts, check data confidence.",
+  "author": {
+    "name": "Andreas Sigloch",
+    "email": "andreas@siglochconsulting.de"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/andreassigloch/moneyflow-mcp"
+  },
+  "keywords": [
+    "mcp",
+    "model-context-protocol",
+    "moneyflow",
+    "finance",
+    "geldfluss",
+    "simulation",
+    "graph"
+  ],
+  "server": {
+    "type": "node",
+    "entry_point": "dist/index.js",
+    "mcp_config": {
+      "command": "node",
+      "args": ["${__dirname}/dist/index.js"],
+      "env": {
+        "MONEYFLOW_API_URL": "${user_config.api_url}",
+        "MONEYFLOW_API_KEY": "${user_config.api_key}"
+      }
+    }
+  },
+  "user_config": {
+    "api_url": {
+      "type": "string",
+      "title": "API URL",
+      "description": "moneyflow API base URL (default: https://money-flow.org)",
+      "required": false
+    },
+    "api_key": {
+      "type": "string",
+      "title": "API Key",
+      "description": "Optional API key for higher rate limits",
+      "required": false
+    }
+  },
+  "tools": [
+    {
+      "name": "moneyflow_list_templates",
+      "description": "List available actor templates (households, enterprises, government) with optional filtering"
+    },
+    {
+      "name": "moneyflow_find_template",
+      "description": "Find the best actor template by class, search term, NACE code, or size class"
+    },
+    {
+      "name": "moneyflow_get_flow_path",
+      "description": "Get money flow path between nodes — shows all intermediate stops, splits, and sources"
+    },
+    {
+      "name": "moneyflow_get_splits",
+      "description": "Show outgoing flow distribution of a node — where does the money go?"
+    },
+    {
+      "name": "moneyflow_simulate",
+      "description": "What-if simulation: change a macro factor and compute cascade effects"
+    },
+    {
+      "name": "moneyflow_compare_cohorts",
+      "description": "Compare two cohorts/templates for significant differences in flows and splits"
+    },
+    {
+      "name": "moneyflow_get_confidence",
+      "description": "Get source and confidence information for a node's edges"
+    },
+    {
+      "name": "moneyflow_get_graph_stats",
+      "description": "Get graph statistics: templates, sectors, coverage, data sources"
+    }
+  ],
+  "compatibility": {
+    "claude_desktop": ">=0.10.0",
+    "platforms": ["darwin", "win32", "linux"],
+    "runtimes": {
+      "node": ">=20.0.0"
+    }
+  }
+}
