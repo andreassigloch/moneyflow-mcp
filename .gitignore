@@ -2,3 +2,7 @@ node_modules/
 dist/
 *.tsbuildinfo
 .env
+
+# Editor / harness configs
+.claude/
+.vscode/
